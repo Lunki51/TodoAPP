@@ -1,0 +1,68 @@
+body{
+    background: gray;
+}
+#title{
+    transform: translatex(-50%);
+    position: absolute;
+    left: 50%;
+    font-size: 5vh;
+}
+#list{
+    outline-color: black;
+    transform: translatex(-50%);
+    position: absolute;
+    top: 10%;
+    left: 50%;
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    border-radius: 20px;
+    border-top: solid;
+    border-left: solid;
+    border-right: solid;
+    border-color: goldenrod;
+    width: 80%;
+    background: white;
+}
+li{
+    border-bottom: solid;
+    border-bottom-color: goldenrod;
+    height: 50px;
+}
+
+#addTask{
+    position: fixed;
+    bottom: 0;
+    transform: translateX(-50%);
+    left: 50%;
+}
+.task{
+    height: 100%;
+    display: flex;
+}
+.data{
+    margin: auto;
+    font-size: 2vh;
+    width: 100%;
+    height: 100%;
+}
+#removeTask{
+    border-radius: 20px;
+    font-size: 2vh;
+    size: 2vw;
+}
+#list-topData{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 50%;
+}
+#list-bottomData{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 50%;
+}

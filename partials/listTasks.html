@@ -1,0 +1,30 @@
+<div>
+    <label id="title">TodoApp</label>
+    <input type="text" id="searchBar" ng-model="search.name">
+    <select id="search.category" ng-model="search.category">
+        <option value="">--Please choose an option--</option>
+        <option ng-repeat="option in options" value="{{option}}">{{option}}</option>
+    </select>
+    <ul id="list">
+        <li ng-repeat="task in tasks | filter:{category:search.category,name:search.name}" >
+            <div class="task" ng-click="details($index)">
+                <div class="data">
+                    <div id="list-topData">
+                        <label id="name">{{task.name}}</label>
+                        <label id="date">{{task.date}}</label>
+                        <label id="duree">{{task.duree}}</label>
+                    </div>
+                    <div id="list-bottomData">
+                        <label id="desc">{{task.desc}}</label>
+                        <label id="url">{{task.url}}</label>
+                    </div>
+
+                </div>
+
+                <button ng-click="RemoveTask($index)" id="removeTask"> Delete Task</button>
+            </div>
+        </li>
+    </ul>
+    <button ng-click="goToAdd()" id="addTask"> New Task</button>
+    <button ng-click="testAdd()" id="testAdd">Test add</button>
+</div>
