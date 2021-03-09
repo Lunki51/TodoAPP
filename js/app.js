@@ -25,15 +25,6 @@ app.controller('AppController',function AppController($scope, $location){
     $scope.goToAdd = function () {
         $location.path("/add:"+(tasks.length));
     }
-    $scope.testAdd = function(){
-        tasks.push({id:tasks.length==0?0:tasks[tasks.length-1].id+1,name:"dummy",desc:"dummy",duree:1,url:"dummy",date:"01/01/1970",category:"dummy"})
-        localStorage.setItem('tasks',JSON.stringify(tasks))
-        $scope.tasks.forEach(function(task){
-            if(!$scope.options.includes(task.category)){
-                $scope.options.push(task.category);
-            }
-        });
-    }
     $scope.RemoveTask = function(index){
         tasks.splice(index,1)
         localStorage.setItem('tasks',JSON.stringify(tasks))
@@ -42,6 +33,12 @@ app.controller('AppController',function AppController($scope, $location){
         $location.path("/details"+index);
     }
 });
+
+app.filter('concatDate',['$filter',  function($filter) {
+    return function(input) {
+        return $filter('date')(new Date(input), 'yyyy-MM-dd');
+    };
+}])
 
 app.controller('AddController',function AppController($scope,$routeParams ,$location) {
     let id = $routeParams.id;
@@ -66,6 +63,8 @@ app.controller('AddController',function AppController($scope,$routeParams ,$loca
 
             }
             localStorage.setItem('tasks',JSON.stringify(tasks))
+        }else{
+            alert("Vous devez entrez au minimum un nom,une date et une durée !")
         }
     }
     $scope.cancel = function(){
