@@ -1,10 +1,13 @@
 <div>
-    <label id="title">TodoApp</label>
-    <input type="text" id="searchBar" ng-model="search.name">
-    <select id="search.category" ng-model="search.category">
-        <option value="">--Please choose an option--</option>
-        <option ng-repeat="option in options" value="{{option}}">{{option}}</option>
-    </select>
+    <div id="topbar">
+        <label id="title">TodoApp</label>
+        <input type="text" id="searchBar" placeholder="Rechercher" required ng-model="search.name">
+        <select id="search.category" ng-model="search.category">
+            <option value="">No category filter</option>
+            <option ng-repeat="option in options" value="{{option}}">{{option}}</option>
+        </select>
+        <button ng-click="testAdd()" id="testAdd">Test add</button>
+    </div>
     <ul id="list">
         <li ng-repeat="task in tasks | filter:{category:search.category,name:search.name}" >
             <div class="task" ng-click="details($index)">
@@ -25,6 +28,5 @@
             </div>
         </li>
     </ul>
-    <button ng-click="goToAdd()" id="addTask"> New Task</button>
-    <button ng-click="testAdd()" id="testAdd">Test add</button>
+    <button ng-click="goToAdd()" id="addTask"> +</button>
 </div>

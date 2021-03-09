@@ -1,17 +1,21 @@
-<button id="add-cancel" ng-click="cancel()">Cancel</button>
-<button ng-click="addTask()" id="add-valid">Valid</button>
+<div id="topbar">
+    <button id="add-cancel" ng-click="cancel()">Cancel</button>
+    <button ng-click="addTask()" id="add-valid">Valid</button>
+</div>
+<div id="formulaire">
+    <form>
+        <input id="add-name" ng-model="name">Nom</input>
+        <input id="add-category" ng-model="category">Category</input>
+        <div>
+            <input type="date" id="add-date" ng-model="date">Date</input>
+        </div>
+        <div>
+            <input type="number" id="add-duree" ng-model="duree">Duree</input>
+        </div>
+        <div>
+            <input id="add-desc" ng-model="desc">Description</input>
+            <input id="add-url" ng-model="url">URL</input>
+        </div>
+    </form>
+</div>
 
-<form>
-    <input id="add-name" ng-model="name">Nom</input>
-    <input id="add-category" ng-model="category">Category</input>
-    <div>
-        <input type="date" id="add-date" ng-model="date">Date</input>
-    </div>
-    <div>
-        <input type="number" id="add-duree" ng-model="duree">Duree</input>
-    </div>
-    <div>
-        <input id="add-desc" ng-model="desc">Description</input>
-        <input id="add-url" ng-model="url">URL</input>
-    </div>
-</form>
