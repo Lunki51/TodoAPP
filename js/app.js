@@ -1,6 +1,8 @@
 var app = angular.module('todoApp',['ngRoute']);
-
-const tasks = new Array();
+let tasks = JSON.parse(localStorage.getItem('tasks'));
+if(!tasks){
+    localStorage.setItem('tasks',JSON.stringify(new Array()))
+}
 
 app.config(function ($routeProvider) {
     $routeProvider
@@ -11,7 +13,8 @@ app.config(function ($routeProvider) {
 })
 
 app.controller('AppController',function AppController($scope, $location){
-    $scope.tasks = tasks;
+    $scope.tasks = tasks
+
     $scope.options = new Array();
     $scope.tasks.forEach(function(task){
         if(!$scope.options.includes(task.category)){
@@ -20,12 +23,10 @@ app.controller('AppController',function AppController($scope, $location){
     });
     $scope.goToAdd = function () {
         $location.path("/add:"+(tasks.length));
-        /*$scope.location = $location;
-        $scope.$watch('location.path()', function(path){
-        });*/
     }
     $scope.testAdd = function(){
-        tasks.push({name:"dummy",desc:"dummy",duree:1,url:"dummy",date:"01/01/1970",category:"dummy"})
+        tasks.push({id:tasks.length==0?0:tasks[tasks.length-1].id+1,name:"dummy",desc:"dummy",duree:1,url:"dummy",date:"01/01/1970",category:"dummy"})
+        localStorage.setItem('tasks',JSON.stringify(tasks))
         $scope.tasks.forEach(function(task){
             if(!$scope.options.includes(task.category)){
                 $scope.options.push(task.category);
@@ -33,7 +34,7 @@ app.controller('AppController',function AppController($scope, $location){
         });
     }
     $scope.RemoveTask = function(index){
-        $scope.tasks.splice(index, 1);
+        tasks.splice(index,1)
     }
     $scope.details = function(index){
         $location.path("/details"+index);
@@ -42,7 +43,7 @@ app.controller('AppController',function AppController($scope, $location){
 
 app.controller('AddController',function AppController($scope,$routeParams ,$location) {
     let id = $routeParams.id;
-    let task = tasks[id];
+    let task = tasks[id]
     if(task){
         $scope.name = task.name;
         $scope.desc = task.desc;
@@ -53,12 +54,15 @@ app.controller('AddController',function AppController($scope,$routeParams ,$loca
     }
     $scope.addTask = function() {
         if(task){
-            tasks[id] = {name:$scope.name,desc:$scope.desc,duree:$scope.duree,url:$scope.url,date:$scope.date,category:$scope.category};
+            tasks[id]= ({id:tasks.length==0?0:tasks[tasks.length-1].id+1,name:$scope.name,desc:$scope.desc,duree:$scope.duree,url:$scope.url,date:$scope.date,category:$scope.category});
             $location.path("details"+id);
+
         }else{
-            tasks.push({name:$scope.name,desc:$scope.desc,duree:$scope.duree,url:$scope.url,date:$scope.date,category:$scope.category})
+            tasks.push({id:tasks.length==0?0:tasks[tasks.length-1].id+1,name:$scope.name,desc:$scope.desc,duree:$scope.duree,url:$scope.url,date:$scope.date,category:$scope.category})
             $location.path("")
+
         }
+        localStorage.setItem('tasks',JSON.stringify(tasks))
     }
     $scope.cancel = function(){
         if(task){
@@ -72,7 +76,7 @@ app.controller('AddController',function AppController($scope,$routeParams ,$loca
 
 app.controller('DetailsController',function DetailsController($scope,$routeParams,$location){
     let id = $routeParams.id;
-    $scope.task = tasks[id];
+    $scope.task = tasks[id]
     $scope.valid = function(){
         $location.path("/");
     }
