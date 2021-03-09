@@ -9,7 +9,7 @@
         <button ng-click="testAdd()" id="testAdd">Test add</button>
     </div>
     <ul id="list">
-        <li ng-repeat="task in tasks | filter:{category:search.category,name:search.name}" >
+        <li ng-repeat="task in tasks | filter:{category:search.category,name:search.name} track by task.id" >
             <div class="task" ng-click="details($index)">
                 <div class="data">
                     <div id="list-topData">
@@ -18,8 +18,8 @@
                         <label id="duree">{{task.duree}}</label>
                     </div>
                     <div id="list-bottomData">
-                        <label id="desc">{{task.desc}}</label>
-                        <label id="url">{{task.url}}</label>
+                        <label id="desc">{{task.category}}</label>
+                        <label id="url">{{task.desc}}</label>
                     </div>
 
                 </div>

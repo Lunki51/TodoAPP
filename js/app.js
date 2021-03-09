@@ -1,4 +1,5 @@
 var app = angular.module('todoApp',['ngRoute']);
+
 let tasks = JSON.parse(localStorage.getItem('tasks'));
 if(!tasks){
     localStorage.setItem('tasks',JSON.stringify(new Array()))
@@ -17,7 +18,7 @@ app.controller('AppController',function AppController($scope, $location){
 
     $scope.options = new Array();
     $scope.tasks.forEach(function(task){
-        if(!$scope.options.includes(task.category)){
+        if(!$scope.options.includes(task.category) && task.category!=""){
             $scope.options.push(task.category);
         }
     });
@@ -35,6 +36,7 @@ app.controller('AppController',function AppController($scope, $location){
     }
     $scope.RemoveTask = function(index){
         tasks.splice(index,1)
+        localStorage.setItem('tasks',JSON.stringify(tasks))
     }
     $scope.details = function(index){
         $location.path("/details"+index);
@@ -53,16 +55,18 @@ app.controller('AddController',function AppController($scope,$routeParams ,$loca
         $scope.category = task.category;
     }
     $scope.addTask = function() {
-        if(task){
-            tasks[id]= ({id:tasks.length==0?0:tasks[tasks.length-1].id+1,name:$scope.name,desc:$scope.desc,duree:$scope.duree,url:$scope.url,date:$scope.date,category:$scope.category});
-            $location.path("details"+id);
+        if($scope.name && $scope.duree && $scope.date){
+            if(task){
+                tasks[id]= ({id:tasks.length==0?0:tasks[tasks.length-1].id+1,name:$scope.name,desc:$scope.desc,duree:$scope.duree,url:$scope.url,date:$scope.date,category:$scope.category?$scope.category:""});
+                $location.path("details"+id);
 
-        }else{
-            tasks.push({id:tasks.length==0?0:tasks[tasks.length-1].id+1,name:$scope.name,desc:$scope.desc,duree:$scope.duree,url:$scope.url,date:$scope.date,category:$scope.category})
-            $location.path("")
+            }else{
+                tasks.push({id:tasks.length==0?0:tasks[tasks.length-1].id+1,name:$scope.name,desc:$scope.desc,duree:$scope.duree,url:$scope.url,date:$scope.date,category:$scope.category?$scope.category:""})
+                $location.path("")
 
+            }
+            localStorage.setItem('tasks',JSON.stringify(tasks))
         }
-        localStorage.setItem('tasks',JSON.stringify(tasks))
     }
     $scope.cancel = function(){
         if(task){
