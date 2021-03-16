@@ -2,9 +2,9 @@ body{
     background: #CDCDCD;
 }
 #topbar{
-    background-color: rebeccapurple;
+    background-color: #5E5E5E;
     width: 100%;
-    padding: 15px;
+    position: relative;
 }
 #title{
     color: white;
@@ -17,7 +17,6 @@ body{
 #searchBar{
     background-color: white;
     height: 7vh;
-    margin-right: 2px;
     border-width: 1px;
     border-style: solid;
     border-color: black;
@@ -36,26 +35,24 @@ body{
     outline-color: black;
     transform: translatex(-50%);
     position: absolute;
-    top: 10%;
     left: 50%;
-}
-ul{
+    width: 75%;
+    transform: translateX(-50%);
     list-style-type: none;
     padding: 0;
     margin: 5px;
     text-align: center;
-    /*border-radius: 20px;*/
     border-top: solid;
     border-left: solid;
     border-right: solid;
     border-bottom: solid;
-    border-color: rebeccapurple;
-    width: 80%;
+    border-color: #5E5E5E;
     background: white;
 }
+
 li{
     border-bottom: solid;
-    border-bottom-color: rebeccapurple;
+    border-bottom-color: #5E5E5E;
     height: 50px;
     margin: 10px;
 }
@@ -82,7 +79,7 @@ li{
     height: 50%;
 }
 #removeTask{
-    background-color: #006042;
+    background-color: #606060;
     color: white;
     border: none;
     /*border-radius: 20px;*/
@@ -99,7 +96,7 @@ li{
     font-weight: bold;
     border-radius: 50%;
     border: none;
-    background-color: rebeccapurple;
+    background-color: #5E5E5E;
     position: fixed;
     right: 5px;
     bottom: 5px;
