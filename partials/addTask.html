@@ -1,20 +1,38 @@
 <div id="topbar">
-    <button id="add-cancel" ng-click="cancel()">Cancel</button>
-    <button ng-click="addTask()" id="add-valid">Valid</button>
+    <style>
+        #topbar{
+            display: inline-block;
+            transform: none;
+        }
+    </style>
+    <button class="bouton" id="add-cancel" ng-click="cancel()">Cancel</button>
+    <button class="bouton" ng-click="addTask()" id="add-valid">Valid</button>
 </div>
 <div id="formulaire">
     <form>
-        <input id="add-name" ng-model="name">Nom</input>
-        <input id="add-category" ng-model="category">Category</input>
-        <div>
-            <input type="date" id="add-date" ng-model="date">Date</input>
+        <div class="input">
+            <label>Nom</label>
+            <input placeholder="Nom" class="champ" id="add-name" ng-model="name">
         </div>
-        <div>
-            <input type="number" id="add-duree" ng-model="duree">Duree (Minutes)</input>
+        <div class="input">
+            <label>Categorie</label>
+           <input placeholder="Categorie" class="champ" id="add-category" ng-model="category">
         </div>
-        <div>
-            <input id="add-desc" ng-model="desc">Description</input>
-            <input id="add-url" ng-model="url">URL</input>
+        <div class="input">
+            <label>Date</label>
+            <input placeholder="Date" class="champ" type="date" id="add-date" ng-model="date">
+        </div>
+        <div class="input">
+            <label>Duree (Minutes)</label>
+           <input placeholder="Duree (Minutes)" class="champ" type="number" id="add-duree" ng-model="duree">
+        </div>
+        <div class="input">
+            <label>Description</label>
+            <input placeholder="Description" class="champ" id="add-desc" ng-model="desc">
+        </div>
+        <div class="input">
+            <label>URL</label>
+            <input placeholder="URL" class="champ" id="add-url" ng-model="url">
         </div>
     </form>
 </div>

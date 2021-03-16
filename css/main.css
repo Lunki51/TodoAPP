@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+}
+
 body{
     background: #CDCDCD;
 }
@@ -5,18 +9,22 @@ body{
     background-color: #5E5E5E;
     width: 100%;
     position: relative;
+    height: 10%;
 }
 #title{
     color: white;
-    transform: translatex(-50%);
-    /*position: absolute;*/
-    /*left: 50%;*/
+    position: relative;
+    top: 25%;
     font-size: 5vh;
-    margin-right: 20px;
 }
+
 #searchBar{
-    background-color: white;
+    background-color: #ffffff;
     height: 7vh;
+    position: relative;
+    top: 50%;
+    width: 20%;
+    transform: translateY(-50%);
     border-width: 1px;
     border-style: solid;
     border-color: black;
@@ -24,23 +32,40 @@ body{
 #search\.category{
     background-color: white;
     color:  black;
+    position: relative;
+    top: 50%;
+    width: 20%;
+    transform: translateY(-50%);
     padding: 5px;
     height: 7vh;
     border-width: 1px;
     border-style: solid;
     border-color: black;
 }
+@media (max-width: 500px) {
+    #topbar{
+        display: grid;
+    }
+    #search\.category{
+        top: 20%;
+        width: auto;
+        transform: none;
+    }
+    #searchBar{
+        top: 20%;
+        width: auto;
+        transform: none;
+    }
+}
 #list{
-    margin: 50px;
     outline-color: black;
-    transform: translatex(-50%);
     position: absolute;
     left: 50%;
-    width: 75%;
-    transform: translateX(-50%);
+    width: 90%;
+    top: 12vh;
+    transform: translate(-50%,12vh);
     list-style-type: none;
     padding: 0;
-    margin: 5px;
     text-align: center;
     border-top: solid;
     border-left: solid;
@@ -54,14 +79,12 @@ li{
     border-bottom: solid;
     border-bottom-color: #5E5E5E;
     height: 50px;
-    margin: 10px;
 }
 .task{
     height: 100%;
     display: flex;
 }
 .data{
-    margin: auto;
     font-size: 2vh;
     width: 100%;
     height: 100%;
@@ -79,13 +102,12 @@ li{
     height: 50%;
 }
 #removeTask{
-    background-color: #606060;
+    background-color: #5E5E5E;
     color: white;
     border: none;
     /*border-radius: 20px;*/
     font-size: 2vh;
     size: 2vw;
-    margin: 5px;
     cursor: pointer;
 }
 #addTask{
@@ -100,63 +122,65 @@ li{
     position: fixed;
     right: 5px;
     bottom: 5px;
-    /*transform: translateX(-50%);*/
-    /*left: 50%;*/
     cursor: pointer;
 }
-#formulaire{
-    margin: 20px;
-}
-#add-cancel{
-    color: black;
-    background-color: white;
-    height: 7vh;
-    width: 10vw;
-    margin-right: 2px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-}
-#add-valid{
-    color: black;
-    background-color: white;
-    height: 7vh;
-    width: 10vw;
-    margin-right: 2px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-}
 #details{
-    margin: 20px;
+    padding: 5px;
+    background-color: white;
+    border: solid;
+    border-color: black;
+    border-width: 1px;
 }
-#details-delete{
+.bouton {
     color: black;
     background-color: white;
-    height: 7vh;
-    width: 10vw;
+    font-size: 20px;
+    height: 50px;
+    width: 80px;
     margin-right: 2px;
     border-width: 1px;
     border-style: solid;
     border-color: black;
+    cursor: pointer;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
-#details-edit{
-    color: black;
+
+@media (max-width: 500px) {
+    .bouton {
+        color: black;
+        background-color: white;
+        font-size: 15px;
+        height: 40px;
+        width: 60px;
+        margin-right: 2px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: black;
+        cursor: pointer;
+        position: relative;
+        top: 22%;
+        transform: none;
+    }
+}
+
+.champ {
     background-color: white;
-    height: 7vh;
-    width: 10vw;
-    margin-right: 2px;
+    height: 5vh;
     border-width: 1px;
     border-style: solid;
     border-color: black;
+    text-align: center;
+    width: 50%;
+    left: 50%;
+    transform: translateX(50%);
 }
-#details-valid{
-    color: black;
-    background-color: white;
-    height: 7vh;
-    width: 10vw;
-    margin-right: 2px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
+
+.input{
+    margin-top: 7vh;
+    position: relative;
+    top: 10%;
+    text-align: center;
+    display: grid;
 }
